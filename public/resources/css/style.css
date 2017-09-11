@@ -1,0 +1,27 @@
+body{
+    overflow: hidden;
+}
+
+#Root{
+    padding-bottom: -200;
+    margin-bottom: -200;
+}
+
+.navbar{
+    margin-bottom: 40px;
+}
+
+.table{
+    margin-bottom: 50px !important ;
+}
+
+.quadro {
+    height: 300px;
+    width: 100%;
+    overflow: auto;
+}
+
+
+.textarea {
+    resize: none;
+}
