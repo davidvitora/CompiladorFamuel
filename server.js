@@ -2,18 +2,21 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
+var tokenAna = require('./TokenAna')();
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
+
 const analisar = function(codigo){
+    var checker = new RegExp("[a-zA-Z]+");
     const tamanho = codigo.length;
     var response = {
         quantidadeDeTokens: 0,
+        possuiErro: false,
         tokens: [
             
         ],
         erros: [
-            { id: 1, linha: 1, descricao: "Erro" }
         ]
     }
 
@@ -23,38 +26,78 @@ const analisar = function(codigo){
         if(codigo.charAt(pos) === 'þ'){
             linha++;
         }else{
+            if(checker.exec(codigo.charAt(pos))){
+                aposanalise = tokenAna.analisarCharSeq( pos, response, codigo, linha );
+                pos = aposanalise.pos;
+                response = aposanalise.response;
+                continue;
+            }
             switch(codigo.charAt(pos)){
                 case '$' : 
-                    aposanalise = analisarIdentificador( pos, response, codigo, linha );
+                    aposanalise = tokenAna.analisarIdentificador( pos, response, codigo, linha );
                     pos = aposanalise.pos;
                     response = aposanalise.response;
                     break;
                 case '{':
                     response.quantidadeDeTokens++;
-                    response.tokens.push({ id: response.quantidadeDeTokens, token: '{', codigo: 1 , linha});
+                    response.tokens.push({ id: response.quantidadeDeTokens, token: '{', codigo: 36 , linha});
                     pos++
                     break;
                 case '}':
                     response.quantidadeDeTokens++;
-                    response.tokens.push({ id: response.quantidadeDeTokens, token: '}', codigo: 1 , linha});
+                    response.tokens.push({ id: response.quantidadeDeTokens, token: '}', codigo: 35 , linha});
+                    pos++;
+                    break;
+                case ';':
+                    response.quantidadeDeTokens++;
+                    response.tokens.push({ id: response.quantidadeDeTokens, token: ';', codigo: 37 , linha});
+                    pos++;
+                    break;
+                case ':':
+                    response.quantidadeDeTokens++;
+                    response.tokens.push({ id: response.quantidadeDeTokens, token: '}', codigo: 38 , linha});
+                    pos++;
+                    break;
+                case '/':
+                    response.quantidadeDeTokens++;
+                    response.tokens.push({ id: response.quantidadeDeTokens, token: '/', codigo: 39 , linha});
+                    pos++;
+                    break;
+                case ',':
+                    response.quantidadeDeTokens++;
+                    response.tokens.push({ id: response.quantidadeDeTokens, token: ',', codigo: 40 , linha});
+                    pos++;
+                    break;
+                case ':':
+                    response.quantidadeDeTokens++;
+                    response.tokens.push({ id: response.quantidadeDeTokens, token: '*', codigo: 41 , linha});
+                    pos++;
+                    break;
+                case ')':
+                    response.quantidadeDeTokens++;
+                    response.tokens.push({ id: response.quantidadeDeTokens, token: ')', codigo: 42 , linha});
+                    pos++;
+                    break;
+                case '(':
+                    response.quantidadeDeTokens++;
+                    response.tokens.push({ id: response.quantidadeDeTokens, token: '(', codigo: 43 , linha});
                     pos++;
                     break;
                 case '+' : 
-                    aposanalise = analisarPlus( pos, response, codigo, linha );
+                    aposanalise = tokenAna.analisarPlus( pos, response, codigo, linha );
                     pos = aposanalise.pos;
                     response = aposanalise.response;
                     break;
                 case '-' : 
-                    aposanalise = analisarMinus( pos, response, codigo, linha );
+                    aposanalise = tokenAna.analisarMinus( pos, response, codigo, linha );
                     pos = aposanalise.pos;
                     response = aposanalise.response;
                     break;
                 case '=' : 
-                    aposanalise = analisarEqual( pos, response, codigo, linha );
+                    aposanalise = tokenAna.analisarEqual( pos, response, codigo, linha );
                     pos = aposanalise.pos;
                     response = aposanalise.response;
                     break;
-                
                 default: pos++; break;
             }
             pos--;
@@ -63,70 +106,6 @@ const analisar = function(codigo){
     return response;
 }
 
-const analisarIdentificador = function(pos , response, codigo, linha){
-    pos++;
-    var identificador = "$";
-    var checker = new RegExp("[a-zA-Z0-9]+");
-    while(checker.exec(codigo.charAt(pos))){
-        identificador += codigo.charAt(pos);
-        pos++;
-    }
-    response.quantidadeDeTokens++;
-    response.tokens.push({ id: response.quantidadeDeTokens, token: identificador, codigo: 1 , linha});
-    return { pos, response }
-};
-
-const analisarPlus = function(pos , response, codigo, linha){
-    pos++;
-    var token = "+";
-    response.quantidadeDeTokens++;
-    if(codigo.charAt(pos) == '+'){
-        token += "+";
-        pos++;
-        response.tokens.push({ id: response.quantidadeDeTokens, token , codigo: 24 , linha});
-        return { pos, response }
-    }else if (codigo.charAt(pos) == '='){
-        token += "=";
-        pos++;
-        response.tokens.push({ id: response.quantidadeDeTokens, token , codigo: 23 , linha});
-        return { pos, response }
-    }
-    response.tokens.push({ id: response.quantidadeDeTokens, token , codigo: 51 , linha});
-    return { pos, response }
-};
-
-const analisarMinus = function(pos , response, codigo, linha){
-    pos++;
-    var token = "-";
-    response.quantidadeDeTokens++;
-    if(codigo.charAt(pos) == '-'){
-        token += "-";
-        pos++;
-        response.tokens.push({ id: response.quantidadeDeTokens, token , codigo: 11 , linha});
-        return { pos, response }
-    }else if (codigo.charAt(pos) == '='){
-        token += "=";
-        pos++;
-        response.tokens.push({ id: response.quantidadeDeTokens, token , codigo: 12 , linha});
-        return { pos, response }
-    }
-    response.tokens.push({ id: response.quantidadeDeTokens, token , codigo: 13 , linha});
-    return { pos, response }
-};
-
-const analisarEqual = function(pos , response, codigo, linha){
-    pos++;
-    var token = "=";
-    response.quantidadeDeTokens++;
-    if(codigo.charAt(pos) == '='){
-        token += "=";
-        pos++;
-        response.tokens.push({ id: response.quantidadeDeTokens, token , codigo: 45 , linha});
-        return { pos, response }
-    }
-    response.tokens.push({ id: response.quantidadeDeTokens, token , codigo: 47 , linha});
-    return { pos, response }
-};
 
 app.get('/', function(req, res){
     res.sendFile(soma);
