@@ -68,11 +68,18 @@ export default class Home extends Component{
         return (
             <div className="row">
                 <div className=" col-md-7">
-                    <h4> Codigo Fonte </h4>
-                    <textarea id="TextArea" className="textarea" placeholder="Digite o código" rows="18" cols="65">
-
-                    </textarea>
-                    <button className="btn btn-danger" onClick={()=> { this.analisar(this) }}> Analisar </button>
+                    <div className="row">
+                        <div className=" col-md-12">
+                            <h4> Codigo Fonte </h4>
+                            <textarea id="TextArea" className="textarea" placeholder="Digite o código" rows="18" cols="65">
+                            </textarea>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className=" col-md-12">
+                            <button className="btn btn-danger" onClick={()=> { this.analisar(this) }}> Analisar </button>
+                        </div>
+                    </div>
                 </div>
                 <div className="col-md-5">
                     <div className="row">
