@@ -12037,6 +12037,11 @@ exports.default = function () {
             "p",
             null,
             " David Vitor Antonio "
+        ),
+        _react2.default.createElement(
+            "p",
+            null,
+            " Samuel Martins "
         )
     );
 };

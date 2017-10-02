@@ -10,6 +10,7 @@ export default () => {
             <p> O aplicativo tem o intuido de ser um compilador para a linguagem Famuel </p>
             <h4> Desenvolvedor </h4>
             <p> David Vitor Antonio </p>
+            <p> Samuel Martins </p>
         </div>
     );
 }
