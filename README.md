@@ -8,4 +8,4 @@ Instruções para iniciação
 2 - Abrir o console de comando na pasta do projeto
 3 - Executar comando "npm install" para baixar as dependencias
 4 - Executar comando "node server"
-5 - No navegador acessar localhost:3000
+5 - No navegador acessar "localhost:3000"
