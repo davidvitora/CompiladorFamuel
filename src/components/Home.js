@@ -4,11 +4,15 @@ export default class Home extends Component{
     constructor(props) {
         super(props);
         this.state = {analise: {
-            quantidadeDeTokens: 1,
+                linha: 1,
+                quantidadeDeTokens: 1,
+                possuiErro: false,
                 tokens: [
+                    
                 ],
                 erros: [
-                ]
+                ],
+                sintatico: { possuiErro: false, erro: {}, quantidadeDePilhas: 0 , listaPilhaDeAnalise: [] }
             }
         };
     }
@@ -16,13 +20,6 @@ export default class Home extends Component{
     analisar(isso){
         var conteudo = document.getElementById("TextArea").value;
         conteudo = conteudo.replace(new RegExp('\n', 'g'), 'þ');
-        isso.setState({analise: {
-            quantidadeDeTokens: 1,
-                tokens: [
-                ],
-                erros: [
-                ]
-            }});
         fetch("/analise", {
             method: "post",
             headers: {
@@ -36,6 +33,7 @@ export default class Home extends Component{
             response.json().then(function(json){
                 isso.setState({ analise: json })
                 console.log(json.tokens);
+                console.log(json.sintatico);
             });
         });
     }
@@ -63,11 +61,23 @@ export default class Home extends Component{
         });
     }
 
+    listPilha(){
+        return this.state.analise.sintatico.listaPilhaDeAnalise.map((item)=>{
+            return (
+                <tr key={item.id}>
+                    <td>{ item.pilha }</td>
+                    <td>{ item.oX }</td>
+                    <td>{ item.oa }</td>
+                </tr>
+            );
+        });
+    }
+
 
     render() {
         return (
             <div className="row">
-                <div className=" col-md-7">
+                <div className=" col-md-6">
                     <div className="row">
                         <div className=" col-md-12">
                             <h4> Codigo Fonte </h4>
@@ -81,7 +91,7 @@ export default class Home extends Component{
                         </div>
                     </div>
                 </div>
-                <div className="col-md-5">
+                <div className="col-md-6">
                     <div className="row">
                         <div className="quadro">
                             <h4> Processo Léxico </h4>
@@ -111,6 +121,23 @@ export default class Home extends Component{
                                 </thead>
                                 <tbody>
                                     { this.listErros() }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div className="row erros">
+                        <div className="quadro">
+                            <h4> Progresso da pilha </h4>
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th>Pilha</th>
+                                        <th>X</th>
+                                        <th>a</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    { this.listPilha() }
                                 </tbody>
                             </table>
                         </div>

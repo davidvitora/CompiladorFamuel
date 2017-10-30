@@ -64,13 +64,13 @@ module.exports = () => { return ({
             if(codigo.charAt(pos) == '*'){
                 comentario += '*';
                 pos++;
-                if(codigo.charAt(pos) == '>'){
+                if(codigo.charAt(pos) == '>' ){
                     while(codigo.charAt(pos) != 'þ' && codigo.charAt(pos) != 'æ'){
                         pos++;
                     }
                     return { pos, response}
                 }
-                while(codigo.charAt(pos) != '*' && codigo.charAt(pos) != 'æ'){
+                while((codigo.charAt(pos) != '*' || codigo.charAt(pos + 1) != '>') && codigo.charAt(pos) != 'æ'){
                     if(codigo.charAt(pos) == 'þ'){
                         linha : response.linha++;
                     } else {
@@ -78,14 +78,11 @@ module.exports = () => { return ({
                     }
                     pos++;
                 }
-                if(codigo.charAt(pos + 1) == ">"){
+                if(codigo.charAt(pos) == '*' && codigo.charAt(pos + 1) == '>'){
                     pos += 2;
-                } else if(codigo.charAt(pos) == "æ") {
+                } else if(codigo.charAt(pos) == 'æ') {
                     response.possuiErro = true;
-                    response.erros.push({ id: 1, linha : response.linha , descricao: "Comentário sem simbolo de encerramento" });
-                } else{
-                    response.possuiErro = true;
-                    response.erros.push({ id: 1, linha : response.linha , descricao: "Comentário faltando >" });
+                    response.erros.push({ id: 1, linha : response.linha , descricao: "Comentário sem simbolo *> de encerramento" });
                 }
             } else{
                 response.possuiErro = true;

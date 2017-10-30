@@ -1,6 +1,5 @@
 body{
     height: 100%;
-    overflow: hidden;
     background-color: #000000;
 }
 
@@ -18,7 +17,13 @@ body{
 }
 
 .quadro {
-    height: 300px;
+    max-height: 300px;
+    width: 100%;
+    overflow: auto;
+}
+
+.quadros {
+    max-height: 1024px;
     width: 100%;
     overflow: auto;
 }

@@ -4,6 +4,7 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 var tokenAna = require('./TokenAna')();
+var SintaticoAna = require('./SintaticoAna')();
 app.use('/files', express.static('public'));
 app.use(bodyParser.json());
 
@@ -28,7 +29,8 @@ const analisar = function(codigo){
             
         ],
         erros: [
-        ]
+        ],
+        sintatico: { possuiErro: false, erro: {}, quantidadeDePilhas: 0 , listaPilhaDeAnalise: [] }
     }
 
     for(pos = 0; pos < tamanho; pos++){
@@ -182,6 +184,9 @@ app.get('/Painel/Analisador', function(req, res){
 app.all('/analise', function(req, res){
     console.log(req.body);
     const analise = analisar(req.body.codigo + 'æ');
+    if(analise.possuiErro == false){
+        SintaticoAna.analisar_sintatico(analise);
+    }
     res.json(analise);
 });
 

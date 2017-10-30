@@ -11772,9 +11772,12 @@ var Home = function (_Component) {
         var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
 
         _this.state = { analise: {
+                linha: 1,
                 quantidadeDeTokens: 1,
+                possuiErro: false,
                 tokens: [],
-                erros: []
+                erros: [],
+                sintatico: { possuiErro: false, erro: {}, quantidadeDePilhas: 0, listaPilhaDeAnalise: [] }
             }
         };
         return _this;
@@ -11785,11 +11788,6 @@ var Home = function (_Component) {
         value: function analisar(isso) {
             var conteudo = document.getElementById("TextArea").value;
             conteudo = conteudo.replace(new RegExp('\n', 'g'), 'þ');
-            isso.setState({ analise: {
-                    quantidadeDeTokens: 1,
-                    tokens: [],
-                    erros: []
-                } });
             fetch("/analise", {
                 method: "post",
                 headers: {
@@ -11803,6 +11801,7 @@ var Home = function (_Component) {
                 response.json().then(function (json) {
                     isso.setState({ analise: json });
                     console.log(json.tokens);
+                    console.log(json.sintatico);
                 });
             });
         }
@@ -11852,6 +11851,31 @@ var Home = function (_Component) {
             });
         }
     }, {
+        key: 'listPilha',
+        value: function listPilha() {
+            return this.state.analise.sintatico.listaPilhaDeAnalise.map(function (item) {
+                return _react2.default.createElement(
+                    'tr',
+                    { key: item.id },
+                    _react2.default.createElement(
+                        'td',
+                        null,
+                        item.pilha
+                    ),
+                    _react2.default.createElement(
+                        'td',
+                        null,
+                        item.oX
+                    ),
+                    _react2.default.createElement(
+                        'td',
+                        null,
+                        item.oa
+                    )
+                );
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
@@ -11861,7 +11885,7 @@ var Home = function (_Component) {
                 { className: 'row' },
                 _react2.default.createElement(
                     'div',
-                    { className: ' col-md-7' },
+                    { className: ' col-md-6' },
                     _react2.default.createElement(
                         'div',
                         { className: 'row' },
@@ -11894,7 +11918,7 @@ var Home = function (_Component) {
                 ),
                 _react2.default.createElement(
                     'div',
-                    { className: 'col-md-5' },
+                    { className: 'col-md-6' },
                     _react2.default.createElement(
                         'div',
                         { className: 'row' },
@@ -11976,6 +12000,51 @@ var Home = function (_Component) {
                                     'tbody',
                                     null,
                                     this.listErros()
+                                )
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row erros' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'quadro' },
+                            _react2.default.createElement(
+                                'h4',
+                                null,
+                                ' Progresso da pilha '
+                            ),
+                            _react2.default.createElement(
+                                'table',
+                                { className: 'table' },
+                                _react2.default.createElement(
+                                    'thead',
+                                    null,
+                                    _react2.default.createElement(
+                                        'tr',
+                                        null,
+                                        _react2.default.createElement(
+                                            'th',
+                                            null,
+                                            'Pilha'
+                                        ),
+                                        _react2.default.createElement(
+                                            'th',
+                                            null,
+                                            'X'
+                                        ),
+                                        _react2.default.createElement(
+                                            'th',
+                                            null,
+                                            'a'
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'tbody',
+                                    null,
+                                    this.listPilha()
                                 )
                             )
                         )
