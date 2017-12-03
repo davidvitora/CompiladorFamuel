@@ -2,7 +2,7 @@
   "name": "compilatorfamuel",
   "version": "0.0.1",
   "description": "Compilator para a linguagem Famuel",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack -p"

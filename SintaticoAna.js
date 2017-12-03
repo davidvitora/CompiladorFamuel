@@ -6,28 +6,28 @@ const M = function(X,a){
     tabParsing[48][2] = [2,10,36,49,50,51,35];
     tabParsing[49][2] = [15];
     tabParsing[49][3] = [15];
-    tabParsing[49][7] = [7,52,38,53,37,54];
+    tabParsing[49][7] = [100, 7, 52, 38, 100.1, 53, 37, 54];
     tabParsing[49][12] = [15];
     tabParsing[49][13] = [15];
     tabParsing[49][17] = [15];
     tabParsing[49][23] = [15];
     tabParsing[49][44] = [15];
-    tabParsing[50][2] = [56,7,57,36,49,50,51,4,43,58,42,35,50];
-    tabParsing[50][3] = [56,7,57,36,49,50,51,4,43,58,42,35,50];
-    tabParsing[50][12] = [56,7,57,36,49,50,51,4,43,58,42,35,50];
+    tabParsing[50][2] = [56,7,57,36,49,50,51,4,43,106,105,58,42,35,50];
+    tabParsing[50][3] = [56,7,57,36,49,50,51,4,43,106,105,58,42,35,50];
+    tabParsing[50][12] = [56,7,57,36,49,50,51,4,43,106,105,58,42,35,50];
     tabParsing[50][13] = [15];
-    tabParsing[50][17] = [56,7,57,36,49,50,51,4,43,58,42,35,50];
-    tabParsing[50][23] = [56,7,57,36,49,50,51,4,43,58,42,35,50];
+    tabParsing[50][17] = [101.1, 56,101, 102, 7,57,36,49,50,51,4,43,106,105,58,42,35,50]; //declaracao de funcao
+    tabParsing[50][23] = [56,7,57,36,49,50,51,4,43,106,105,58,42,35,50]; 
     tabParsing[51][13] = [13,61,37,62,18];
     tabParsing[52][38] = [15];
-    tabParsing[52][40] = [40,7,52];
+    tabParsing[52][40] = [40, 100, 7,52]; //Repeticao de declaracao de
     tabParsing[53][3] = [3];
     tabParsing[53][12] = [12];
     tabParsing[53][17] = [17];
     tabParsing[53][23] = [23];
     tabParsing[54][2] = [15];
     tabParsing[54][3] = [15];
-    tabParsing[54][7] = [55,38,53,37,54];
+    tabParsing[54][7] = [100, 55,38, 100.1, 53,37,54];
     tabParsing[54][12] = [15];
     tabParsing[54][13] = [15];
     tabParsing[54][17] = [15];
@@ -53,18 +53,18 @@ const M = function(X,a){
     tabParsing[59][23] = [53,60];
     tabParsing[60][37] = [37,53,60];
     tabParsing[60][42] = [15];
-    tabParsing[61][1] = [1,43,7,67,42,36,61,37,62,35];
-    tabParsing[61][5] = [63,29,63];
-    tabParsing[61][6] = [63,29,63];
-    tabParsing[61][7] = [63,29,63];
-    tabParsing[61][8] = [63,29,63];
-    tabParsing[61][9] = [63,29,63];
-    tabParsing[61][14] = [14,43,7,67,42,36,61,37,62,35,68];
-    tabParsing[61][16] = [16,43,7,29,69,37,7,67,37,70,42,36,61,37,62,35];
-    tabParsing[61][20] = [20,36,61,37,62,35,1,43,7,67,42];
+    tabParsing[61][1] = [103, 106,1,43, 101, 7,67,42,36,61,37,62,35];
+    tabParsing[61][5] = [103, 106,63,29,63];
+    tabParsing[61][6] = [103, 106,63,29,63];
+    tabParsing[61][7] = [103, 106,63,29,63];
+    tabParsing[61][8] = [103, 106,63,29,63];
+    tabParsing[61][9] = [103, 106,63,29,63];
+    tabParsing[61][14] = [103, 106,14, 43, 7,67,42,36,61,37,62,35,68];
+    tabParsing[61][16] = [16,43, 7,29,69,37, 101 , 7,67,37,70,42,36,61,37,62,35];
+    tabParsing[61][20] = [20,36,61,37,62,35,1,43, 101, 7,67,42];
     tabParsing[61][21] = [21,31,11,71];
     tabParsing[61][22] = [22,25,7];
-    tabParsing[61][24] = [24,7,64];
+    tabParsing[61][24] = [24, 107, 7,64];
     tabParsing[61][37] = [15];
     tabParsing[61][43] = [63,29,63];
     tabParsing[62][18] = [15];
@@ -74,7 +74,7 @@ const M = function(X,a){
     tabParsing[63][7] = [73,74];
     tabParsing[63][8] = [73,74];
     tabParsing[63][9] = [73,74];
-    tabParsing[63][24] = [24,7,64];
+    tabParsing[63][24] = [24, 107, 7,64];
     tabParsing[63][43] = [73,74];
     tabParsing[64][29] = [15];
     tabParsing[64][37] = [15];
@@ -106,8 +106,8 @@ const M = function(X,a){
     tabParsing[71][37] = [15];
     tabParsing[72][31] = [15];
     tabParsing[72][37] = [15];
-    tabParsing[72][40] = [40,7,72];
-    tabParsing[73][5] = [75,76];
+    tabParsing[72][40] = [40, 7,72];
+    tabParsing[73][5] = [ 75, 76];
     tabParsing[73][6] = [75,76];
     tabParsing[73][7] = [75,76];
     tabParsing[73][8] = [75,76];
@@ -120,7 +120,7 @@ const M = function(X,a){
     tabParsing[74][47] = [47,73,74];
     tabParsing[75][5] = [5];
     tabParsing[75][6] = [6];
-    tabParsing[75][7] = [7];
+    tabParsing[75][7] = [7]; //variaveis de comando
     tabParsing[75][8] = [8];
     tabParsing[75][9] = [9];
     tabParsing[75][43] = [43,63,42];
@@ -161,53 +161,142 @@ function sleep(seconds)
 module.exports = () => { return ({
 
     analisar_sintatico: (response) => {
+
+
+        var tabelaDeControle = {
+            variaveis: [],
+            funcoes: [],
+            funcaoSendoDeclarada: {}
+        }
+
         console.log("Inicio da analise sintatica")
         var lista = JSON.parse(JSON.stringify(response.tokens));
         pilha = [];
         pilha.push(44);
         pilha.push(48);
-        console.log(pilha);
         const tamLista = lista.length;
-        console.log("Inicio do for");
         var voltaparapilha = false;
         for(var it = 0; it < tamLista; it++){
             var X = pilha[pilha.length - 1];
             var a = lista[it];
-            console.log("A é igual a " + a.codigo);
             do {
-                console.log("X é igual a " + X);
-                console.log("Pilha atual");
-                console.log(pilha)
                 envia_analise(response, pilha, X, a)
                 if( X == 15){
                     pilha.pop();
                     X = pilha[pilha.length - 1];
-                    console.log("Primeiro if");
                 } else {
                     //Verifica se o simbolo é terminal
-                    if(X < 48 ){
+                    if(X > 99){
+                        if(X == 100){
+                            if(tabelaDeControle.variaveis.findIndex((value)=>{
+                              return value.nome == a.token;
+                            }) == -1){
+                                tabelaDeControle.variaveis.push({ nome: a.token, tipo: null});
+                            } else {
+                                response.sintatico.possuiErro = true;
+                                response.erros.push({ id: 1, linha : a.linha , descricao: "Erro Semantico: Variavel " + a.token +
+                                " já foi declarada" });
+                                return response;
+                            }
+                        }
+                        else if (X == 100.1){
+                            tabelaDeControle.variaveis.forEach((variavel)=>{
+                                if(variavel.tipo == null){
+                                    variavel.tipo = a.token;
+                                }
+                            })
+                        }
+                        else if(X == 101.1){
+                            tabelaDeControle.funcaoSendoDeclarada = { nome: null, tipo: a.token }
+                        }
+                        else if(X == 101){
+                            if(tabelaDeControle.funcoes.findIndex((value)=>{
+                                return value.nome == a.token;
+                              }) == -1){
+                                tabelaDeControle.funcoes.push({ nome: a.token, tipo: tabelaDeControle.funcaoSendoDeclarada.tipo});
+                                tabelaDeControle.funcaoSendoDeclarada.nome = a.token;
+                            } else {
+                                response.sintatico.possuiErro = true;
+                                response.erros.push({ id: 1, linha : a.linha , descricao: "Erro Semantico: Funcao " + a.token +
+                                " já foi declarada" });
+                                return response;
+                            }
+                        }
+                        else if(X == 102){
+                            if(tabelaDeControle.variaveis.findIndex((value)=>{
+                                return value.nome == a.token;
+                              }) == -1){
+                            } else {
+                                response.sintatico.possuiErro = true;
+                                response.erros.push({ id: 1, linha : a.linha , descricao: "Erro Semantico: Já existe uma variavel declarada"
+                                + " com o nome " + a.token +" a qual está tentando utilizar para declarar uma função" });
+                                return response;
+                            }
+                        }
+                        else if(X == 103){
+                            if(tabelaDeControle.funcoes.findIndex((value)=>{
+                                return value.nome == a.token;
+                              }) == -1){
+                            } else {
+                                response.sintatico.possuiErro = true;
+                                response.erros.push({ id: 1, linha : a.linha , descricao: "Erro Semantico: Está sendo atribuido valor a "
+                                + "uma funcao ( " + a.token + " )" });
+                                return response;
+                            }
+                        }
+                        else if(X == 105){
+                            var index = tabelaDeControle.variaveis.findIndex((value)=>{
+                                return value.nome == a.token;
+                            });
+                            if(tabelaDeControle.funcaoSendoDeclarada.tipo != tabelaDeControle.variaveis[index].tipo ){
+                                response.sintatico.possuiErro = true;
+                                response.erros.push({ id: 1, linha : a.linha , descricao: "Erro Semantico: O retorna para a funcao " 
+                                + tabelaDeControle.funcaoSendoDeclarada.nome + " que deveria ser do tipo " + tabelaDeControle.funcaoSendoDeclarada.tipo
+                                + " está recebendo o tipo " + tabelaDeControle.variaveis[index].tipo});
+                                return response;
+                            }
+                            tabelaDeControle.funcaoSendoDeclarada = {}
+                        }
+                        else if (X == 106){
+                            if(tabelaDeControle.variaveis.findIndex((value)=>{
+                                return value.nome == a.token;
+                            }) == -1){
+                                response.sintatico.possuiErro = true;
+                                response.erros.push({ id: 1, linha : a.linha , descricao: "Erro Semantico: Variavel " + a.token +
+                                " não foi declarada" });
+                                return response;
+                            }
+                        }
+                        else if (X == 107){
+                            if(tabelaDeControle.funcoes.findIndex((value)=>{
+                                return value.nome == a.token;
+                            }) == -1){
+                                response.sintatico.possuiErro = true;
+                                response.erros.push({ id: 1, linha : a.linha , descricao: "Erro Semantico: Funcao " + a.token +
+                                " não foi declarada" });
+                                return response;
+                            }
+                        }
+                        pilha.pop();
+                        X = pilha[pilha.length - 1];
+                    } else if(X < 48 ){
                         if(X == a.codigo){
-                            console.log("If do a == X");
                             pilha.pop();
                             voltaparapilha = true;
                         } else {
                             response.sintatico.possuiErro = true;
                             response.erros.push({ id: 1, linha : a.linha , descricao: "Erro Sintatico no token " + a.token });
-                            console.log("erro de não é igual");
                             return response;
                         }
                     } else {
                         if(M(X,a.codigo) != null){
-                            console.log("If do codigo");
                             pilha.pop();
                             var itens = M(X,a.codigo).reverse();
                             pilha = pilha.concat(itens);
-                            console.log("codigo corretamente lido " + M(X,a.codigo));
                             X = pilha[pilha.length - 1];
                             voltaparapilha = false;
                         } else {
                             response.sintatico.possuiErro = true;
-                            console.log("erro de matriz");
                             response.erros.push({ id: 1, linha : a.linha , descricao: "Erro Sintatico no token " + a.token  });
                             return response;
                         }
@@ -219,8 +308,9 @@ module.exports = () => { return ({
                 console.log("Analisado com sucesso");
             }
             voltaparapilha = false;
-            console.log("Voltou pro for");
         }
+        console.log("tabela de controle");
+        console.log(tabelaDeControle);
     }
 });
 }

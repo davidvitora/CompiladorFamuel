@@ -1,11 +1,13 @@
 void main { 
-$test, $test, $test : float;
+$variavel0 : float;
+$variavel1, $variavel2, $variavel3 : char;
+$variavel4, $variavel5, $variavel6 : integer;
 
-float $teste {
+float $funcao2 {
  inicio
- $teste = 2 - 2.2 - 2.2 - $teste;
- $teste = 2;
+ $variavel4 = $variavel2  + $variavel3;
  fim
- return ($teste )
+ return ( $variavel0 )
 }
+
 inicio; fim }

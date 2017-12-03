@@ -227,7 +227,6 @@ module.exports = () => { return ({
                 pos++;
             }
             response.quantidadeDeTokens++;
-            console.log(charSeq);
             switch(charSeq){
                 case 'while' :
                 response.tokens.push({ id: response.quantidadeDeTokens, token: charSeq, codigo: 1 , linha : response.linha});
