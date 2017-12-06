@@ -185,7 +185,7 @@ module.exports = () => { return ({
                     pilha.pop();
                     X = pilha[pilha.length - 1];
                 } else {
-                    //Verifica se o simbolo é terminal
+                    //Verifica se o codigo é uma analise semantica
                     if(X > 99){
                         if(X == 100){
                             if(tabelaDeControle.variaveis.findIndex((value)=>{
