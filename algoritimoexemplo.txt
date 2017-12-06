@@ -1,3 +1,5 @@
+//Algoritimo perfeito, não vai ocorrer nenhum tipo de erro
+
 void main { 
 $variavel0 : float;
 $variavel1, $variavel2, $variavel3 : char;
@@ -11,3 +13,130 @@ float $funcao2 {
 }
 
 inicio; fim }
+
+//Verificação de codigo 100
+//No algoritimo abaixo irá ocorrer erro semantico pois está tentando declarar duas variaveis com o mesmo nome
+
+void main { 
+$variavel0 : float;
+$variavel1 : char;
+$variavel0 : integer;
+
+float $funcao2 {
+ inicio
+ $variavel0 = $variavel2  + $variavel3;
+ fim
+ return ( $variavel0 )
+}
+
+inicio; fim }
+
+//Verificação de codigo 101
+//No algoritimo abaixo vai ocorrer um erro pois está tentando declara uma função com um nome igual a de outra função declarada
+
+void main { 
+$variavel0 : float;
+$variavel1 : char;
+$variavel2 : integer;
+
+float $funcao1 {
+ inicio
+ $variavel2 = $variavel2  + $variavel3;
+ fim
+ return ( $variavel0 )
+}
+
+float $funcao1 {
+ inicio
+ $variavel2 = $variavel2  + $variavel3;
+ fim
+ return ( $variavel0 )
+}
+
+//Verificação de codigo 102
+//No algoritimo abaixo vai ocorrer um erro pois está tentando declara uma função com um nome que já foi utilizado na declaração de uma variavel
+
+void main { 
+$variavel0 : float;
+$variavel1 : char;
+$variavel2 : integer;
+
+float $variavel1 {
+ inicio
+ $variavel2 = $variavel2  + $variavel3;
+ fim
+ return ( $variavel0 )
+}
+
+inicio; fim }
+
+//Verificação de codigo 103
+//No algoritimo abaixo vai ocorrer um erro pois está tentando inserir um valor dentro de uma função
+
+void main { 
+$variavel0 : float;
+$variavel1 : char;
+$variavel2 : integer;
+
+float $funcao2 {
+ inicio
+ $funcao2 = $variavel2  + $variavel3;
+ fim
+ return ( $variavel0 )
+}
+
+inicio; fim }
+
+//Verificação de codigo 105
+//No algoritimo abaixo vai ocorrer um erro pois está tentando retornar um float em uma função que deveria retornar o valor integer conforme sua declaração
+
+void main { 
+$variavel0 : float;
+$variavel1 : char;
+$variavel2 : integer;
+
+integer $funcao2 {
+ inicio
+ $variavel2 = $variavel2  + $variavel3;
+ fim
+ return ( $variavel0 )
+}
+
+inicio; fim }
+
+//Verificação de codigo 106
+//No algoritimo abaixo vai ocorrer um erro pois a variavel que está recebendo o valor não está declarada
+
+void main { 
+$variavel0 : float;
+$variavel1 : char;
+$variavel2 : integer;
+
+float $funcao2 {
+ inicio
+ $variavel3 = $variavel2  + $variavel3;
+ fim
+ return ( $variavel0 )
+}
+
+inicio; fim }
+
+//Verificação de codigo 107
+//No algoritimo abaixo vai ocorrer um erro pois está tentando chamar uma função não declarada
+
+void main { 
+$variavel0 : float;
+$variavel1 : char;
+$variavel2 : integer;
+
+float $funcao1 {
+ inicio
+ $variavel2 = callfuncao $funcao2;
+ fim
+ return ( $variavel0 )
+}
+
+inicio; fim }
+
+
+
